@@ -1,0 +1,40 @@
+
+<!-- Upload File UI section  -->
+<input type="file" class="file-input" #fileInputCtrl (change)="onFileSelected($event)">
+
+<div class="file-upload">
+  <button (click)="fileInputCtrl.click()"> Select file </button>
+  {{fileName}}
+</div>
+<button (click)="onFileUpload()">Upload file</button>
+
+<hr/>
+<!-- Get file info section  -->
+<div>
+  <button (click)="onFileInfo(fileInfoName.value)">Get file info</button>
+  <input type="text" #fileInfoName>
+
+  <table>
+    <tr><td>Name</td><td>Size</td><td>Upload date</td>
+    </tr>
+    <tr > 
+       <td> {{ fileDetails.name }}</td>
+      <td> {{ fileDetails.size }}</td>
+     <td>{{ formatDate(fileDetails.uploadDate) }}</td> 
+    </tr>
+  </table>
+</div>
+
+<hr/>
+<!-- Get all files info section  -->
+<div>
+  <button (click)="onAllFileInfo()">Get all files info</button>
+  <table>
+    <tr><td>Name</td><td>Size</td><td>Upload date</td>
+      <tr *ngFor="let r of filesDetails"> 
+       <td> {{ r.name }}</td>
+      <td> {{ r.size }}</td>
+     <td>{{ formatDate(r.uploadDate) }}</td>
+    </tr>
+  </table>
+</div>
